@@ -8,7 +8,7 @@ node {
      sh 'mvn clean compile'
       }
     }
-   stage('Unit Test') {
+   stage('Unit Test run') {
     withMaven(jdk: 'JDK-1.8', maven: 'Maven-3.6.1') {
      sh 'mvn test'
       } 
