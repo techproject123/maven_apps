@@ -13,7 +13,7 @@ node {
      sh 'mvn test'
       } 
     }
-   stage('Package') {
+   stage('Packageto Jfrog') {
     withMaven(jdk: 'JDK-1.8', maven: 'Maven-3.6.1') {
      sh 'mvn package'
       }
