@@ -21,10 +21,19 @@ node {
    stage('Deploy to Dev') {
      
     }
+   stage('Automation Testing') {
+     
+    }
    stage('Deploy to Test') {
      
     }
+   stage('Smoke Testing') {
+     
+    }
    stage('Deploy to Prod') {
+     
+    }
+   stage('Acceptance Testing') {
      
     }
 }
