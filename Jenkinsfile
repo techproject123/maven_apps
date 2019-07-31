@@ -1,29 +1,40 @@
 node {
-    stage('Code Checkout') { // for display purposes
-     echo 'Checout Code and clone it inside jenkins workspace.'
-     git 'https://github.com/itrainavengers/maven_apps.git'
-   }
-   stage('Build Test & Package') {
-      echo 'Build the package'
-      withMaven(jdk: 'JDK-1.8', maven: 'Maven-3.6.1') {
-       sh 'mvn clean compile'
-     }
-   }
-   stage('Artifacts') {
-       echo 'package the project artifacts..'
-       withMaven(jdk: 'JDK-1.8', maven: 'Maven-3.6.1') {
-       sh 'mvn package'
-     }
    
-   }
-   stage('Deploy to Dev'){
-       echo 'Deploy to Dev environment'
-   }
-   stage('Deploy to Test'){
-       echo 'Deploy to Test environment'
-   }
-      stage('Test Automation'){
-       echo 'Deploy to Dev environment'
-   }
-   
+   stage('Code Checkout') { 
+      git credentialsId: 'github', url: 'https://github.com/techproject123/maven_apps.git'
+    }
+   stage('Build') {
+    withMaven(jdk: 'jdk', maven: 'maven') {
+     sh 'mvn clean compile'
+      }
+    }
+   stage('Unit Test run') {
+   withMaven(jdk: 'jdk', maven: 'maven'){
+     sh 'mvn test'
+      } 
+    }
+   stage('Packageto Jfrog') {
+    withMaven(jdk: 'jdk', maven: 'maven') {
+
+     sh 'mvn package'
+      }
+    }
+   stage('Deploy to Dev') {
+     
+    }
+   stage('Automation Testing') {
+     
+    }
+   stage('Deploy to Test') {
+     
+    }
+   stage('Smoke Testing') {
+     
+    }
+   stage('Deploy to Prod') {
+     
+    }
+   stage('Acceptance Testing') {
+     
+    }
 }
